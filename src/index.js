@@ -1,9 +1,9 @@
 import Volume from './Volume'
 import Scene from './Scene'
 
-const SCENE_WIDTH = 800
-const SCENE_HEIGHT = 800
-const SCENE_ZLENGTH = 800
+const SCENE_WIDTH = 400
+const SCENE_HEIGHT = 400
+const SCENE_ZLENGTH = 400
 
 const COORDINATE_ORIGIN = {
     x: SCENE_WIDTH / 2,
