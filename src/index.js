@@ -11,7 +11,8 @@ const COORDINATE_ORIGIN = {
     z: SCENE_ZLENGTH / 2,
 }
 
-const VOLUMNE_SIZE = 100
+const VOLUMNE_SIZE = 80
+const STEP = 10
 
 
 
@@ -25,30 +26,58 @@ let ctx = canvas.getContext('2d')
 let imageData = ctx.createImageData(SCENE_WIDTH, SCENE_HEIGHT);
 
 let volume = new Volume(VOLUMNE_SIZE)
-let scene = new Volume(COORDINATE_ORIGIN, volume)
+let scene = new Scene(
+    COORDINATE_ORIGIN, 
+    volume,
+    SCENE_WIDTH,
+    SCENE_HEIGHT,
+    imageData
+)
 
+ctx.putImageData(scene.getImageData(), 0, 0);
 
-
-function drawBackground(imageData) {
-    for (var h = 0; h < height; h++) {
-        for (var w = 0; w < width; w++) {
-            white(w, h);
-        }
+function rotate(axis, angle) {
+    if (axis === 'x' ) {
+        scene.rotateX(angle)
+    } else if (axis === 'y' ) {
+        scene.rotateY(angle)
+    } else if (axis === 'z') {
+        scene.rotateZ(angle)
     }
-    function white(x, y) {
-        var index = (y * width + x) * 4;
-        imageData.data[index + 0] = 127;
-        imageData.data[index + 1] = 127;
-        imageData.data[index + 2] = 127;
-        imageData.data[index + 3] = 127;
-    }
+
+
+    ctx.putImageData(scene.getImageData(), 0, 0);
 }
 
 
-function renderPixel(imageData, x, y, pixel) {
-    var index = (y * width + x) * 4;
-    imageData.data[index + 0] = pixel
-    imageData.data[index + 1] = pixel
-    imageData.data[index + 2] = pixel
-    imageData.data[index + 3] = 127;
-}
+
+
+document.addEventListener('keydown', function (ev) {
+    switch (ev.keyCode) {
+        case 87:
+            rotate('x', STEP)
+            break
+        case 83:
+            rotate('x', -STEP)
+            break
+        case 69:
+            rotate('y', STEP)
+            break
+        case 68:
+            rotate('y', -STEP)
+            break
+        case 81:
+            rotate('z', STEP)
+            break
+        case 65:
+            rotate('z', -STEP)
+            break
+    }
+
+});
+
+
+
+
+
+

@@ -11,7 +11,7 @@ module.exports = {
     },
     context: path.resolve(__dirname),
     entry: {
-        app: path.join(__dirname, './src/index.jsx')
+        app: path.join(__dirname, './src/index.js')
     },
     output: {
         path: path.join(__dirname, 'dist'),
@@ -35,7 +35,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'multi retrieve form',
+            title: '3D render',
         }),
         new webpack.HotModuleReplacementPlugin()
     ],
@@ -51,12 +51,6 @@ module.exports = {
         overlay: { 
             warnings: false, 
             errors: true 
-        },
-        // publicPath: config.dev.assetsPublicPath,
-        // proxy: config.dev.proxyTable,
-        // quiet: true, // necessary for FriendlyErrorsPlugin
-        // watchOptions: {
-        //     poll: config.dev.poll,
-        // }
+        }
     },
 }

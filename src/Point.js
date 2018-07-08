@@ -1,13 +1,12 @@
 
 
-
 export default class Point {
 
-    constructor(x, y, z, pixel) {
+    constructor(x, y, z, val) {
         this.x = x
         this.y = y
         this.z = z
-        this.pixel = pixel
+        this.val = val
     }
            
 }
