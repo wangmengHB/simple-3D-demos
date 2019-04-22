@@ -1,7 +1,7 @@
 import Scene from './Scene'
 
-const SCENE_WIDTH = 400
-const SCENE_HEIGHT = 400
+const SCENE_WIDTH = 600
+const SCENE_HEIGHT = 600
 
 const STEP = 10
 

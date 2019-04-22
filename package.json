@@ -4,9 +4,10 @@
   "description": "This is just a demo showing how and why 3D volume is rendered (orthographic) without any webgl or three.js ",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config webpack.config.js",
-    "build": "webpack --config webpack.config.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "demo1": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo1",
+    "demo2": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo2",
+    "demo3": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo3",
+    "demo4": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo4"
   },
   "author": "Meng Wang <wangmeng_hb@163.com>",
   "license": "MIT",
