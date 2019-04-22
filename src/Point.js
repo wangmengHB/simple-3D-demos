@@ -1,12 +1,35 @@
 
-
 export default class Point {
 
-    constructor(x, y, z, val) {
-        this.x = x
-        this.y = y
-        this.z = z
-        this.val = val
+  constructor(coordinate, color) {
+    this.coordinate = {
+      x: coordinate.x,
+      y: coordinate.y,
+      z: coordinate.z,
+      w: 1
     }
-           
+    this.color = {
+      r: color.r,
+      g: color.g,
+      b: color.b,
+      a: color.a
+    }
+  }
+
+  clone() {
+    const coordinate = {
+      x: this.coordinate.x,
+      y: this.coordinate.y,
+      z: this.coordinate.z,
+      w: this.coordinate.w,
+    };
+    const color = {
+      r: this.color.r,
+      g: this.color.g,
+      b: this.color.b,
+      a: this.color.a,
+    };
+    return new Point(coordinate, color);
+  }         
 }
+
