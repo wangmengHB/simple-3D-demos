@@ -38,6 +38,12 @@ function rotate(axis, angle) {
   scene.paint();
 }
 
+function walk(step) {
+
+  scene.forward(step);
+  scene.paint();
+}
+
 
 
 
@@ -67,6 +73,14 @@ document.addEventListener('keydown', function (ev) {
     case 65:
         rotate('z', -STEP)
         break
+    // key: up
+    case 38:
+      walk(0.01);
+      break;
+    // key: down
+    case 40:
+      walk(-0.01);
+      break;
   }
 
 });

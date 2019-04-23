@@ -1,6 +1,6 @@
 import Point from './Point'
 
-const GAP = 0.01;
+const GAP = 0.005;
 const MIN = -0.3;
 const MAX = 0.3;
 

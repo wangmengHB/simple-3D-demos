@@ -66,6 +66,20 @@ export function rotateZ(angle, point) {
     y * Math.cos(toRadian(angle)); 
 }
 
+export function toSphere(point, camera) {
+  if (!(point instanceof Point)) {
+    throw new Error('only support point type!')
+  }
+  const x = point.coordinate.x - camera.x;
+  const y = point.coordinate.y - camera.y;
+  const z = point.coordinate.z - camera.z;
+  const next = point.clone();
+  next.coordinate.x = Math.atan(x/z);
+  next.coordinate.y = Math.atan(y/z);
+  next.coordinate.z = Math.hypot(x, y, z);
+  return next;
+}
+
 
 
 

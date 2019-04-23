@@ -1,6 +1,8 @@
-import Point from './Point'
-import { rotateX, rotateY, rotateZ } from './transform';
+import { rotateX, rotateY, rotateZ, toSphere } from './transform';
 import { buildPoints } from './buildSamplePoint';
+
+const FOV = 90 * Math.PI / 180;
+
 
 export default class Scene {
   constructor(width, height, canvas) {
@@ -19,33 +21,40 @@ export default class Scene {
   }
 
   calcPointsToImageData() {
-    // the point nearest to face, should be drawed last.
-    this.points.sort((a, b) => a.coordinate.z > b.coordinate.z);
-
     // clear image data
     for (let i = 0; i < this.imageData.data.length; i++) {
       this.imageData.data[i] = 0;
     }
+    
+    const spherePoints = this.points.map(p => toSphere(p, this.camera));
+
+    // the point nearest to face, should be drawed last.
+    spherePoints.sort((a, b) => b.coordinate.z - a.coordinate.z);
 
     // normalize the coordinate to canvas coordinate
-    this.points.forEach(p => {
+    spherePoints.forEach(p => {
+      // x, y is angle!!
       const {x, y} = p.coordinate;
       const {r, g, b, a} = p.color;
-      const canvasX = Math.floor((this.width / 2) * x + this.width / 2);
-      const canvasY = Math.floor((this.height / 2) * y + this.height /2);
-      const index = (canvasY * this.width + canvasX) * 4;
-      this.imageData.data[index] = r;
-      this.imageData.data[index + 1] = g;
-      this.imageData.data[index + 2] = b;
-      this.imageData.data[index + 3] = a;
+
+      if (x > -FOV/2 && x < FOV/2 && y < FOV/2 && y > -FOV/2) {
+
+        const canvasX = Math.floor((this.width / 2) * (x/(FOV/2))+ this.width / 2);
+        const canvasY = Math.floor((this.height / 2) * (y/(FOV/2)) + this.height /2);
+        const index = (canvasY * this.width + canvasX) * 4;
+        this.imageData.data[index] = r;
+        this.imageData.data[index + 1] = g;
+        this.imageData.data[index + 2] = b;
+        this.imageData.data[index + 3] = a;
+      }
+
     })
 
   }
 
-  camera() {
-
+  forward(step) {
+    this.camera.z += step;
   }
-
 
   rotateX (angle) {
     this.points.forEach(p => {
