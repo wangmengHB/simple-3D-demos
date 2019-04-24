@@ -13,7 +13,7 @@ export default class Scene {
 
   calcPointsToImageData() {
     // the point nearest to face, should be drawed last.
-    this.points.sort((a, b) => a.coordinate.z > b.coordinate.z);
+    this.points.sort((a, b) => b.coordinate.z - a.coordinate.z);
 
     // clear image data
     for (let i = 0; i < this.imageData.data.length; i++) {
@@ -32,9 +32,7 @@ export default class Scene {
       this.imageData.data[index + 2] = b;
       this.imageData.data[index + 3] = a;
     })
-
   }
-
 
   rotateX (angle) {
     this.points.forEach(p => {
