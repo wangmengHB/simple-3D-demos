@@ -43,12 +43,15 @@ module.exports = {
           loader: 'babel-loader'
         },
         {
-          test: /\.scss$/,
+          test: /\.css$/,
           use: [
             'style-loader',
             'css-loader',
-            'sass-loader'
           ]
+        },
+        {
+          test: /\.(jpg|png)$/,
+          use: 'file-loader',
         }
       ]
     },
