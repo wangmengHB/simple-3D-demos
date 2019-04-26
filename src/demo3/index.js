@@ -11,6 +11,8 @@ description.innerHTML = `
 <div>press [q or a]: rotatX(+/-10)</div> 
 <div>press [w or s]: rotateY(+/-10)</div> 
 <div>press [e or d]: rotateZ(+/-10)</div>
+<div>press [up]: camera move forward</div>
+<div>press [down]: camera move forward</div>
 `
 document.body.appendChild(description)
 
