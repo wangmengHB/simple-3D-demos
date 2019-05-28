@@ -1,19 +1,20 @@
 
 export default class Point {
 
-  constructor(coordinate, color) {
+  constructor(coordinate, color, pointSize = 3.0) {
     this.coordinate = {
       x: coordinate.x,
       y: coordinate.y,
       z: coordinate.z,
       w: 1
-    }
+    };
     this.color = {
       r: color.r,
       g: color.g,
       b: color.b,
       a: color.a
-    }
+    };
+    this.pointSize = pointSize;
   }
 
   clone() {
@@ -29,7 +30,8 @@ export default class Point {
       b: this.color.b,
       a: this.color.a,
     };
-    return new Point(coordinate, color);
+    const pointSize = this.pointSize;
+    return new Point(coordinate, color, pointSize);
   }         
 }
 

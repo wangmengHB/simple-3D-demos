@@ -1,4 +1,5 @@
 import Scene from './Scene'
+import { buildPoints } from './buildSamplePoint';
 
 const SCENE_WIDTH = 600
 const SCENE_HEIGHT = 600
@@ -19,29 +20,23 @@ document.body.appendChild(canvas)
 canvas.width = SCENE_WIDTH
 canvas.height = SCENE_HEIGHT
 
+
+
+// step 1. build a scene and bind canvas
 let scene = new Scene(
     SCENE_WIDTH,
     SCENE_HEIGHT,
     canvas,
 );
 
+// step 2. add points of 6 faces of a cubic to scene
+scene.addPoints(buildPoints());
+
+// step 3. paint scene
 scene.paint();
 
-function rotate(axis, angle) {
-  if (axis === 'x' ) {
-      scene.rotateX(angle)
-  } else if (axis === 'y' ) {
-      scene.rotateY(angle)
-  } else if (axis === 'z') {
-      scene.rotateZ(angle)
-  }
-  scene.paint();
-}
-
-
-
-
-document.addEventListener('keydown', function (ev) {
+// step 4. add key events
+window.addEventListener('keydown', function (ev) {
   switch (ev.keyCode) {
     // key: q
     case 87:
@@ -70,6 +65,18 @@ document.addEventListener('keydown', function (ev) {
   }
 
 });
+
+
+function rotate(axis, angle) {
+  if (axis === 'x' ) {
+      scene.rotateX(angle)
+  } else if (axis === 'y' ) {
+      scene.rotateY(angle)
+  } else if (axis === 'z') {
+      scene.rotateZ(angle)
+  }
+  scene.paint();
+}
 
 
 
