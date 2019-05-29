@@ -20,7 +20,7 @@ if (index > - 1 && index + 1 < args.length) {
   }
 }
 
-const entryPath = `./src/${DEMO}${demoNum}/index.js`;
+const entryPath = `./src/demo/${DEMO}${demoNum}/index.js`;
 
 module.exports = {
     mode: 'development',

@@ -1,2 +1,4 @@
+.DS_Store
 node_modules/
-dist/
+dist/app.js
+dist/index.html
