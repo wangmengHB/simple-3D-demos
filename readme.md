@@ -18,16 +18,6 @@ npm run demo2     # demo2: 表示第二个demo
 
 3. demo3: 利用球面坐标系实现的一个全景图
 
-3. demo3: 
-
-4. demo4: 使用矩阵方法实现demo2
-
-5. demo4: 使用类型化数组和矩阵方法实现，透视投影3D
-
-5. demo5: webgl
-
-6. demo6: 图形装配 + 光栅化
-
 
 
 

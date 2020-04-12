@@ -6,8 +6,7 @@
   "scripts": {
     "demo1": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo1",
     "demo2": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo2",
-    "demo3": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo3",
-    "demo4": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo4"
+    "demo3": "webpack-dev-server --inline --progress --config webpack.config.js --custom demo3"
   },
   "author": "Meng Wang <wangmeng_hb@163.com>",
   "license": "MIT",
